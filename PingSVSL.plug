@@ -1,6 +1,6 @@
 [Core]
-Name = PingSVSL
-Module = PingSVSL
+Name = SVSL
+Module = svsl
     
 [Documentation]
 Description = Err Bot plugin to ping SVSL
