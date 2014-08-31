@@ -1,0 +1,7 @@
+[Core]
+Name = PingSVSL
+Module = PingSVSL
+    
+[Documentation]
+Description = Err Bot plugin to ping SVSL
+
