@@ -49,7 +49,7 @@ class Ping(BotPlugin):
         if group_text != None:
             return group_text
         else:
-            return "No such group, valid groups are: %s" % (", ".join(sorted(this.groups.keys())),)
+            return "No such group, valid groups are: %s" % (", ".join(sorted(self.groups.keys())),)
             
     @botcmd(split_args_with=None)
     def ping_groups(self, mess, args):
@@ -57,4 +57,4 @@ class Ping(BotPlugin):
         
         groups = self.groups.keys()
         
-        return ", ".join(groups)
+        return ", ".join(sorted(groups))
