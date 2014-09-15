@@ -53,6 +53,6 @@ class Ping(BotPlugin):
     def ping_groups(self, mess, args):
         """Show the groups that can be pinged"""
         
-        groups = this.groups.keys()
+        groups = self.groups.keys()
         
         return groups.join(", ")
