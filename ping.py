@@ -14,10 +14,11 @@ class Ping(BotPlugin):
     def ping_set(self, mess, args):
 
         group_str = args[0]
-        group_tuple = group_str.split(" ")
+        group_tuple = group_str.split(" ", 1)
         
         if len(group_tuple) > 1:
             group, text = group_tuple
+            text = group_tuple(
         else:
             del self.groups[group]
             
