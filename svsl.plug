@@ -1,7 +1,0 @@
-[Core]
-Name = SVSL
-Module = svsl
-    
-[Documentation]
-Description = Err Bot plugin to ping SVSL
-

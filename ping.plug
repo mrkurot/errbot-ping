@@ -1,0 +1,7 @@
+[Core]
+Name = Ping
+Module = ping
+    
+[Documentation]
+Description = Err Bot plugin to ping groups of people
+
