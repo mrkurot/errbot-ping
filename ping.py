@@ -12,7 +12,8 @@ class Ping(BotPlugin):
 
     @botcmd(split_args_with="||")
     def ping_set(self, mess, args):
-
+        """Create/Update a group."""
+        
         group_str = args[0]
         group_tuple = group_str.split(" ", 1)
         
@@ -39,6 +40,7 @@ class Ping(BotPlugin):
     @botcmd(split_args_with=None)
     def ping(self, mess, args):
         """Ping a specified group"""
+        
         group = args[0]
         group = group.lower()
         
@@ -55,4 +57,4 @@ class Ping(BotPlugin):
         
         groups = self.groups.keys()
         
-        return groups.join(", ")
+        return ", ".join(groups)
