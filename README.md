@@ -1,1 +1,1 @@
-A plugin for errbot to ping Space Violence Leadership
+A plugin for errbot to ping groups of people
