@@ -9,7 +9,7 @@ class Ping(BotPlugin):
     #max_err_version = '3.0.0'  # Optional, but recommended
 
     def activate(self):
-        super(Xup, self).activate()
+        super(Ping, self).activate()
 
         if not hasattr(self, 'groups'):
             self['groups'] = {}
