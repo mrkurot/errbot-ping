@@ -19,8 +19,13 @@ class Ping(BotPlugin):
         if len(group_tuple) > 1:
             group, text = group_tuple
             group = group.lower()
+            
+            old_value = self.groups.get(group)
             self.groups[group] = text
-            return "Updated group."
+            if old_value:
+                return "Updated group '%', previous value was: %s" % (group, old_value,)
+            else:
+                return "Created group '%s'." % (group,)
         else:
             group = group_tuple[0]
             group = group.lower()
@@ -33,7 +38,7 @@ class Ping(BotPlugin):
         
     @botcmd(split_args_with=None)
     def ping(self, mess, args):
-        
+        """Ping a specified group"""
         group = args[0]
         group = group.lower()
         
@@ -42,4 +47,12 @@ class Ping(BotPlugin):
         if group_text != None:
             return group_text
         else:
-            return "No such group"
+            return "No such group, valid groups are: %s" % (", ".join(sorted(this.groups.keys())),)
+            
+    @botcmd(split_args_with=None)
+    def ping_groups(self, mess, args):
+        """Show the groups that can be pinged"""
+        
+        groups = this.groups.keys()
+        
+        return groups.join(", ")
