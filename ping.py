@@ -18,10 +18,12 @@ class Ping(BotPlugin):
         
         if len(group_tuple) > 1:
             group, text = group_tuple
+            group = group.lower()
             self.groups[group] = text
             return "Updated group."
         else:
             group = group_tuple[0]
+            group = group.lower()
             if group in self.groups:
                 del self.groups[group]
                 return "Deleted group %s" % group
@@ -33,6 +35,7 @@ class Ping(BotPlugin):
     def ping(self, mess, args):
         
         group = args[0]
+        group = group.lower()
         
         group_text = self.groups.get(group, None)
         
