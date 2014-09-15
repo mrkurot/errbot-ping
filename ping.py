@@ -53,3 +53,9 @@ class Ping(BotPlugin):
         groups = self.keys()
         
         return ", ".join(sorted(groups))
+
+    def __getitem__(self, key):
+        try:
+            return super(Ping, self).__getitem__(key)
+        except KeyError:
+            return None
