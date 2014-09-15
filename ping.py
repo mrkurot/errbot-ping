@@ -22,7 +22,7 @@ class Ping(BotPlugin):
             old_value = self[group]
             self[group] = text
             if old_value:
-                return "Updated group '%', previous value was: %s" % (group, old_value,)
+                return "Updated group '%s', previous value was: %s" % (group, old_value,)
             else:
                 return "Created group '%s'." % (group,)
         else:
