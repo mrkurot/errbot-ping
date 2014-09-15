@@ -8,7 +8,11 @@ class Ping(BotPlugin):
     min_err_version = '1.6.0'  # Optional, but recommended
     #max_err_version = '3.0.0'  # Optional, but recommended
 
-    groups = {}
+    def activate(self):
+        super(Xup, self).activate()
+
+        if not hasattr(self, 'groups'):
+            self['groups'] = {}
 
     @botcmd(split_args_with="||")
     def ping_set(self, mess, args):
