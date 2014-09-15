@@ -18,13 +18,15 @@ class Ping(BotPlugin):
         
         if len(group_tuple) > 1:
             group, text = group_tuple
-            text = group_tuple(
+            self.groups[group] = text
+            return "Updated group."
         else:
-            del self.groups[group]
-            
-        self.groups[group] = text
-
-        return "Updated group."
+            group = group_tuple[0]
+            if group in self.groups:
+                del self.groups[group]
+                return "Deleted group %s" % group
+        
+        
         
         
     @botcmd(split_args_with=None)
