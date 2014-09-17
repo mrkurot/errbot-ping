@@ -32,6 +32,17 @@ class Ping(BotPlugin):
                 del self[group]
                 return "Deleted group %s" % group
         
+    @botcmd(split_args_with=' ')
+    def ping_add(self, mess, args):
+        """Append something to a ping group"""
+        
+        if len(args) > 1:
+            group = str(args[0])
+            message = self[group] or ""
+            message = message + " " + " ".join(args[1:])
+            self[group] = message
+            return "Done."
+        
     @botcmd(split_args_with=None)
     def ping(self, mess, args):
         """Ping a specified group"""
