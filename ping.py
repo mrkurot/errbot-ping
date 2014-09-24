@@ -49,6 +49,10 @@ class Ping(BotPlugin):
         
         if len(args) > 1:
             group = str(args[0]).lower()
+            message = self[group] or ""
+            term = " ".join(args[1:])
+            self[group] = message.replace(term, "")
+            return "Done."
         
     @botcmd(split_args_with=None)
     def ping(self, mess, args):
