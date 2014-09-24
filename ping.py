@@ -37,11 +37,18 @@ class Ping(BotPlugin):
         """Append something to a ping group"""
         
         if len(args) > 1:
-            group = str(args[0])
+            group = str(args[0]).lower()
             message = self[group] or ""
             message = message + " " + " ".join(args[1:])
             self[group] = message
             return "Done."
+    
+    @botcmd(split_args_with=' ')
+    def ping_remove(self, mess, args):
+        """Append something to a ping group"""
+        
+        if len(args) > 1:
+            group = str(args[0]).lower()
         
     @botcmd(split_args_with=None)
     def ping(self, mess, args):
