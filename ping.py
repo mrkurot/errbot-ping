@@ -25,21 +25,11 @@ class Ping(BotPlugin):
             elif user in presences[room]:
                 del presences[room][user]
 
-        # if status == ONLINE:
-        #     presence[room][user] = presence
-        # elif user in presence[room]:
-        #     del presence[room][user]
-
     @botcmd
     def ping_all(self, mess, args):
 
         room = mess.getFrom().getNode()
         usernames = sorted(self.presences[room].keys())
-
-        print room
-        print vars(mess)
-        print self.presences.keys()
-        print usernames
 
         return " ".join(usernames)
 
