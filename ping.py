@@ -1,5 +1,4 @@
 from errbot import BotPlugin, botcmd
-from errbot.builtins.webserver import webhook
 from collections import defaultdict
 
 
