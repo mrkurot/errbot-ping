@@ -79,29 +79,60 @@ class Ping(BotPlugin):
             return "Done."
 
     @botcmd(split_args_with=None)
+    def ping_default(self, mess, args):
+        """Set the default ping group"""
+        if len(args) > 0:
+            group = str(args[0]).lower()
+            self.log.info(group)
+            self.log.info(self.keys())
+            if self[group] is not None:
+                self['DEFAULT'] = group
+            else:
+                return "No such group, valid groups are: {0}".format(self._valid())
+        else:
+            if 'DEFAULT' in self:
+                return "Default group: {0}".format(self['DEFAULT'])
+            else:
+                return "No default group set"
+
+    @botcmd(split_args_with=None)
     def ping(self, mess, args):
         """Ping a specified group"""
 
-        group = str(args[0])
-        group = group.lower()
-
-        group_text = self[group]
-
-        if group_text != None:
-            return group_text
+        if len(args) == 0:
+            if 'DEFAULT' in self:
+                return self[self['DEFAULT']]
+            else:
+                return "Default group not set"
         else:
-            return "No such group, valid groups are: %s" % (", ".join(sorted(self.keys())),)
+            group = str(args[0])
+            group = group.lower()
+
+            group_text = self[group]
+
+            if group_text != None:
+                return group_text
+            else:
+                return "No such group, valid groups are: {0}".format(self._valid())
 
     @botcmd(split_args_with=None)
     def ping_groups(self, mess, args):
         """Show the groups that can be pinged"""
 
-        groups = self.keys()
-
-        return ", ".join(sorted(groups))
+        return self._valid()
 
     def __getitem__(self, key):
         try:
             return super(Ping, self).__getitem__(key)
         except KeyError:
             return None
+
+    def _valid(self):
+        groups = list(self.keys())
+        try:
+            groups.remove('DEFAULT')
+        except ValueError:
+            pass
+        return ", ".join(groups)
+
+
